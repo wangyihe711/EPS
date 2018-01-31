@@ -52,6 +52,7 @@
     <Compile Include="CompanyDal.cs" />
     <Compile Include="PatrolSchemeDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EPS.Common\EPS.Common.csproj">

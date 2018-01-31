@@ -13,6 +13,14 @@ namespace EPS.UI.Portal.Controllers
     {
         PatrolSchemeService bll = new PatrolSchemeService();
 
+        /// <summary>
+        /// Schemes the list.
+        /// </summary>
+        /// <returns></returns>
+        /// 创建者：叶烨星
+        /// 创建时间：2018/1/31 10:03
+        /// 修改者：
+        /// 修改时间：
         public ActionResult SchemeList()
         {
             List<PatrolScheme> patrolSchemeList = bll.GetElementList().Result;
@@ -39,6 +47,11 @@ namespace EPS.UI.Portal.Controllers
             }
 
             ViewBag.Model = modelList;
+            return View();
+        }
+
+        public ActionResult AddScheme()
+        {
             return View();
         }
     }
