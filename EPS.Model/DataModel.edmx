@@ -1,0 +1,1243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataModelStoreContainer">
+    <EntitySet Name="Company" EntityType="DataModel.Store.Company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatrolScheme" EntityType="DataModel.Store.PatrolScheme" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Dictionary" EntityType="DataModel.Store.Dictionary" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Menu" EntityType="DataModel.Store.Menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Department" EntityType="DataModel.Store.Department" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Group" EntityType="DataModel.Store.Group" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employee" EntityType="DataModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="DataModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AcquisitionRecord" EntityType="DataModel.Store.AcquisitionRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatrolReport" EntityType="DataModel.Store.PatrolReport" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Province" EntityType="DataModel.Store.Province" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="City" EntityType="DataModel.Store.City" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="County" EntityType="DataModel.Store.County" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TownShip" EntityType="DataModel.Store.TownShip" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatrolPoint" EntityType="DataModel.Store.PatrolPoint" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatrolRoute" EntityType="DataModel.Store.PatrolRoute" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatrolDefect" EntityType="DataModel.Store.PatrolDefect" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PatrolSchemeDictionary" Association="DataModel.Store.PatrolSchemeDictionary">
+      <End Role="PatrolScheme" EntitySet="PatrolScheme" />
+      <End Role="Dictionary" EntitySet="Dictionary" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyDepartment" Association="DataModel.Store.CompanyDepartment">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="DepartmentGroup" Association="DataModel.Store.DepartmentGroup">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <AssociationSet Name="GroupEmployee" Association="DataModel.Store.GroupEmployee">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeePatrolScheme" Association="DataModel.Store.EmployeePatrolScheme">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="PatrolScheme" EntitySet="PatrolScheme" />
+    </AssociationSet>
+    <AssociationSet Name="UserEmployee" Association="DataModel.Store.UserEmployee">
+      <End Role="User" EntitySet="User" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeDepartment" Association="DataModel.Store.EmployeeDepartment">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeCompany" Association="DataModel.Store.EmployeeCompany">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="AcquisitionRecordDictionary" Association="DataModel.Store.AcquisitionRecordDictionary">
+      <End Role="AcquisitionRecord" EntitySet="AcquisitionRecord" />
+      <End Role="Dictionary" EntitySet="Dictionary" />
+    </AssociationSet>
+    <AssociationSet Name="EmployeeAcquisitionRecord" Association="DataModel.Store.EmployeeAcquisitionRecord">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="AcquisitionRecord" EntitySet="AcquisitionRecord" />
+    </AssociationSet>
+    <AssociationSet Name="ProvinceCity" Association="DataModel.Store.ProvinceCity">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="CityCounty" Association="DataModel.Store.CityCounty">
+      <End Role="City" EntitySet="City" />
+      <End Role="County" EntitySet="County" />
+    </AssociationSet>
+    <AssociationSet Name="CountyTownShip" Association="DataModel.Store.CountyTownShip">
+      <End Role="County" EntitySet="County" />
+      <End Role="TownShip" EntitySet="TownShip" />
+    </AssociationSet>
+    <AssociationSet Name="PatrolReportTownShip" Association="DataModel.Store.PatrolReportTownShip">
+      <End Role="PatrolReport" EntitySet="PatrolReport" />
+      <End Role="TownShip" EntitySet="TownShip" />
+    </AssociationSet>
+    <AssociationSet Name="PatrolPointPatrolReport" Association="DataModel.Store.PatrolPointPatrolReport">
+      <End Role="PatrolPoint" EntitySet="PatrolPoint" />
+      <End Role="PatrolReport" EntitySet="PatrolReport" />
+    </AssociationSet>
+    <AssociationSet Name="DictionaryPatrolReport" Association="DataModel.Store.DictionaryPatrolReport">
+      <End Role="Dictionary" EntitySet="Dictionary" />
+      <End Role="PatrolReport" EntitySet="PatrolReport" />
+    </AssociationSet>
+    <AssociationSet Name="PatrolRoutePatrolReport" Association="DataModel.Store.PatrolRoutePatrolReport">
+      <End Role="PatrolRoute" EntitySet="PatrolRoute" />
+      <End Role="PatrolReport" EntitySet="PatrolReport" />
+    </AssociationSet>
+    <AssociationSet Name="PatrolRoutePatrolScheme" Association="DataModel.Store.PatrolRoutePatrolScheme">
+      <End Role="PatrolRoute" EntitySet="PatrolRoute" />
+      <End Role="PatrolScheme" EntitySet="PatrolScheme" />
+    </AssociationSet>
+    <AssociationSet Name="DictionaryPatrolDefect" Association="DataModel.Store.DictionaryPatrolDefect">
+      <End Role="Dictionary" EntitySet="Dictionary" />
+      <End Role="PatrolDefect" EntitySet="PatrolDefect" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatrolScheme">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DefectTypeId" Type="int" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="PatrolRouteId" Type="int" Nullable="false" />
+    <Property Name="SchemeDate" Type="datetime" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ParentId" Type="int" Nullable="false" />
+    <Property Name="Link" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="true" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IsTeamLeader" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GroupId" Type="int" Nullable="false" />
+    <Property Name="DepartmentId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PictureUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="Available" Type="bit" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AcquisitionRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DataUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DataTypeId" Type="int" Nullable="false" />
+    <Property Name="AcquisitionTime" Type="datetime" Nullable="false" />
+    <Property Name="ReceptionTime" Type="datetime" Nullable="true" />
+    <Property Name="Remark" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatrolReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DefectTypeId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EmergenceId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TownShipId" Type="int" Nullable="false" />
+    <Property Name="Village" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PatrolPointId" Type="int" Nullable="false" />
+    <Property Name="PatrolRouteId" Type="int" Nullable="false" />
+    <Property Name="ReportTime" Type="datetime" Nullable="false" />
+    <Property Name="Dictionary_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProvinceId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="County">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CityId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TownShip">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CountyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatrolPoint">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PoleTowerNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Longitude" Type="float" Nullable="true" />
+    <Property Name="Latitude" Type="float" Nullable="true" />
+    <Property Name="CreateTime" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="PatrolRoute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatrolDefect">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DefectTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PatrolSchemeDictionary">
+    <End Role="PatrolScheme" Type="DataModel.Store.PatrolScheme" Multiplicity="*" />
+    <End Role="Dictionary" Type="DataModel.Store.Dictionary" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatrolScheme">
+        <PropertyRef Name="DefectTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyDepartment">
+    <End Role="Company" Type="DataModel.Store.Company" Multiplicity="1" />
+    <End Role="Department" Type="DataModel.Store.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DepartmentGroup">
+    <End Role="Department" Type="DataModel.Store.Department" Multiplicity="1" />
+    <End Role="Group" Type="DataModel.Store.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GroupEmployee">
+    <End Role="Group" Type="DataModel.Store.Group" Multiplicity="1" />
+    <End Role="Employee" Type="DataModel.Store.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeePatrolScheme">
+    <End Role="Employee" Type="DataModel.Store.Employee" Multiplicity="1" />
+    <End Role="PatrolScheme" Type="DataModel.Store.PatrolScheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatrolScheme">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserEmployee">
+    <End Role="User" Type="DataModel.Store.User" Multiplicity="*" />
+    <End Role="Employee" Type="DataModel.Store.Employee" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeDepartment">
+    <End Role="Employee" Type="DataModel.Store.Employee" Multiplicity="*" />
+    <End Role="Department" Type="DataModel.Store.Department" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeCompany">
+    <End Role="Employee" Type="DataModel.Store.Employee" Multiplicity="*" />
+    <End Role="Company" Type="DataModel.Store.Company" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AcquisitionRecordDictionary">
+    <End Role="AcquisitionRecord" Type="DataModel.Store.AcquisitionRecord" Multiplicity="*" />
+    <End Role="Dictionary" Type="DataModel.Store.Dictionary" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AcquisitionRecord">
+        <PropertyRef Name="DataTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmployeeAcquisitionRecord">
+    <End Role="Employee" Type="DataModel.Store.Employee" Multiplicity="1" />
+    <End Role="AcquisitionRecord" Type="DataModel.Store.AcquisitionRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AcquisitionRecord">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProvinceCity">
+    <End Role="Province" Type="DataModel.Store.Province" Multiplicity="1" />
+    <End Role="City" Type="DataModel.Store.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CityCounty">
+    <End Role="City" Type="DataModel.Store.City" Multiplicity="1" />
+    <End Role="County" Type="DataModel.Store.County" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="County">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CountyTownShip">
+    <End Role="County" Type="DataModel.Store.County" Multiplicity="1" />
+    <End Role="TownShip" Type="DataModel.Store.TownShip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TownShip">
+        <PropertyRef Name="CountyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatrolReportTownShip">
+    <End Role="PatrolReport" Type="DataModel.Store.PatrolReport" Multiplicity="*" />
+    <End Role="TownShip" Type="DataModel.Store.TownShip" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TownShip">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatrolReport">
+        <PropertyRef Name="TownShipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatrolPointPatrolReport">
+    <End Role="PatrolPoint" Type="DataModel.Store.PatrolPoint" Multiplicity="1" />
+    <End Role="PatrolReport" Type="DataModel.Store.PatrolReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatrolPoint">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatrolReport">
+        <PropertyRef Name="PatrolPointId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DictionaryPatrolReport">
+    <End Role="Dictionary" Type="DataModel.Store.Dictionary" Multiplicity="1" />
+    <End Role="PatrolReport" Type="DataModel.Store.PatrolReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatrolReport">
+        <PropertyRef Name="Dictionary_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatrolRoutePatrolReport">
+    <End Role="PatrolRoute" Type="DataModel.Store.PatrolRoute" Multiplicity="1" />
+    <End Role="PatrolReport" Type="DataModel.Store.PatrolReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatrolRoute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatrolReport">
+        <PropertyRef Name="PatrolRouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatrolRoutePatrolScheme">
+    <End Role="PatrolRoute" Type="DataModel.Store.PatrolRoute" Multiplicity="1" />
+    <End Role="PatrolScheme" Type="DataModel.Store.PatrolScheme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatrolRoute">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatrolScheme">
+        <PropertyRef Name="PatrolRouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DictionaryPatrolDefect">
+    <End Role="Dictionary" Type="DataModel.Store.Dictionary" Multiplicity="1" />
+    <End Role="PatrolDefect" Type="DataModel.Store.PatrolDefect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PatrolDefect">
+        <PropertyRef Name="DefectTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Company" EntityType="DataModel.Company" />
+          <EntitySet Name="PatrolScheme" EntityType="DataModel.PatrolScheme" />
+          <EntitySet Name="Dictionary" EntityType="DataModel.Dictionary" />
+          <AssociationSet Name="PatrolSchemeDictionary" Association="DataModel.PatrolSchemeDictionary">
+            <End Role="PatrolScheme" EntitySet="PatrolScheme" />
+            <End Role="Dictionary" EntitySet="Dictionary" />
+          </AssociationSet>
+          <EntitySet Name="Menu" EntityType="DataModel.Menu" />
+          <EntitySet Name="Department" EntityType="DataModel.Department" />
+          <AssociationSet Name="CompanyDepartment" Association="DataModel.CompanyDepartment">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <EntitySet Name="Group" EntityType="DataModel.Group" />
+          <AssociationSet Name="DepartmentGroup" Association="DataModel.DepartmentGroup">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <EntitySet Name="Employee" EntityType="DataModel.Employee" />
+          <AssociationSet Name="GroupEmployee" Association="DataModel.GroupEmployee">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeePatrolScheme" Association="DataModel.EmployeePatrolScheme">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="PatrolScheme" EntitySet="PatrolScheme" />
+          </AssociationSet>
+          <EntitySet Name="User" EntityType="DataModel.User" />
+          <AssociationSet Name="UserEmployee" Association="DataModel.UserEmployee">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeDepartment" Association="DataModel.EmployeeDepartment">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="EmployeeCompany" Association="DataModel.EmployeeCompany">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <EntitySet Name="AcquisitionRecord" EntityType="DataModel.AcquisitionRecord" />
+          <AssociationSet Name="AcquisitionRecordDictionary" Association="DataModel.AcquisitionRecordDictionary">
+            <End Role="AcquisitionRecord" EntitySet="AcquisitionRecord" />
+            <End Role="Dictionary" EntitySet="Dictionary" />
+          </AssociationSet>
+          <EntitySet Name="PatrolReport" EntityType="DataModel.PatrolReport" />
+          <AssociationSet Name="EmployeeAcquisitionRecord" Association="DataModel.EmployeeAcquisitionRecord">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="AcquisitionRecord" EntitySet="AcquisitionRecord" />
+          </AssociationSet>
+          <EntitySet Name="Province" EntityType="DataModel.Province" />
+          <EntitySet Name="City" EntityType="DataModel.City" />
+          <EntitySet Name="County" EntityType="DataModel.County" />
+          <EntitySet Name="TownShip" EntityType="DataModel.TownShip" />
+          <AssociationSet Name="ProvinceCity" Association="DataModel.ProvinceCity">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="CityCounty" Association="DataModel.CityCounty">
+            <End Role="City" EntitySet="City" />
+            <End Role="County" EntitySet="County" />
+          </AssociationSet>
+          <AssociationSet Name="CountyTownShip" Association="DataModel.CountyTownShip">
+            <End Role="County" EntitySet="County" />
+            <End Role="TownShip" EntitySet="TownShip" />
+          </AssociationSet>
+          <AssociationSet Name="PatrolReportTownShip" Association="DataModel.PatrolReportTownShip">
+            <End Role="PatrolReport" EntitySet="PatrolReport" />
+            <End Role="TownShip" EntitySet="TownShip" />
+          </AssociationSet>
+          <EntitySet Name="PatrolPoint" EntityType="DataModel.PatrolPoint" />
+          <AssociationSet Name="PatrolPointPatrolReport" Association="DataModel.PatrolPointPatrolReport">
+            <End Role="PatrolPoint" EntitySet="PatrolPoint" />
+            <End Role="PatrolReport" EntitySet="PatrolReport" />
+          </AssociationSet>
+          <AssociationSet Name="DictionaryPatrolReport" Association="DataModel.DictionaryPatrolReport">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="PatrolReport" EntitySet="PatrolReport" />
+          </AssociationSet>
+          <EntitySet Name="PatrolRoute" EntityType="DataModel.PatrolRoute" />
+          <AssociationSet Name="PatrolRoutePatrolReport" Association="DataModel.PatrolRoutePatrolReport">
+            <End Role="PatrolRoute" EntitySet="PatrolRoute" />
+            <End Role="PatrolReport" EntitySet="PatrolReport" />
+          </AssociationSet>
+          <AssociationSet Name="PatrolRoutePatrolScheme" Association="DataModel.PatrolRoutePatrolScheme">
+            <End Role="PatrolRoute" EntitySet="PatrolRoute" />
+            <End Role="PatrolScheme" EntitySet="PatrolScheme" />
+          </AssociationSet>
+          <EntitySet Name="PatrolDefect" EntityType="DataModel.PatrolDefect" />
+          <AssociationSet Name="DictionaryPatrolDefect" Association="DataModel.DictionaryPatrolDefect">
+            <End Role="Dictionary" EntitySet="Dictionary" />
+            <End Role="PatrolDefect" EntitySet="PatrolDefect" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="DataModel.CompanyDepartment" FromRole="Company" ToRole="Department" />
+          <NavigationProperty Name="Employee" Relationship="DataModel.EmployeeCompany" FromRole="Company" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="PatrolScheme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" Nullable="false" >
+            <Documentation>
+              <LongDescription>编号</LongDescription>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Dictionary" Relationship="DataModel.PatrolSchemeDictionary" FromRole="PatrolScheme" ToRole="Dictionary" />
+          <Property Name="DefectTypeId" Type="Int32" Nullable="false" >
+            <Documentation>
+              <LongDescription>缺陷类型的id</LongDescription>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="Employee" Relationship="DataModel.EmployeePatrolScheme" FromRole="PatrolScheme" ToRole="Employee" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" >
+            <Documentation>
+              <LongDescription>计划制定人的id</LongDescription>
+            </Documentation>
+          </Property>
+          <NavigationProperty Name="PatrolRoute" Relationship="DataModel.PatrolRoutePatrolScheme" FromRole="PatrolScheme" ToRole="PatrolRoute" />
+          <Property Name="PatrolRouteId" Type="Int32" Nullable="false" />
+          <Property Name="SchemeDate" Type="DateTime" Nullable="false" >
+            <Documentation>
+              <LongDescription>计划时间</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Name="StartDate" Type="DateTime" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" />
+          <NavigationProperty Name="PatrolScheme" Relationship="DataModel.PatrolSchemeDictionary" FromRole="Dictionary" ToRole="PatrolScheme" />
+          <NavigationProperty Name="AcquisitionRecord" Relationship="DataModel.AcquisitionRecordDictionary" FromRole="Dictionary" ToRole="AcquisitionRecord" />
+          <NavigationProperty Name="PatrolReport" Relationship="DataModel.DictionaryPatrolReport" FromRole="Dictionary" ToRole="PatrolReport" />
+          <NavigationProperty Name="PatrolDefect" Relationship="DataModel.DictionaryPatrolDefect" FromRole="Dictionary" ToRole="PatrolDefect" />
+        </EntityType>
+        <Association Name="PatrolSchemeDictionary">
+          <End Type="DataModel.PatrolScheme" Role="PatrolScheme" Multiplicity="*" />
+          <End Type="DataModel.Dictionary" Role="Dictionary" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatrolScheme">
+              <PropertyRef Name="DefectTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="Link" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="DataModel.CompanyDepartment" FromRole="Department" ToRole="Company" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="DataModel.DepartmentGroup" FromRole="Department" ToRole="Group" />
+          <NavigationProperty Name="Employee" Relationship="DataModel.EmployeeDepartment" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <Association Name="CompanyDepartment">
+          <End Type="DataModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="DataModel.Department" Role="Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="DataModel.DepartmentGroup" FromRole="Group" ToRole="Department" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="DataModel.GroupEmployee" FromRole="Group" ToRole="Employee" />
+        </EntityType>
+        <Association Name="DepartmentGroup">
+          <End Type="DataModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="DataModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="true" />
+          <Property Name="Gender" Type="String" Nullable="true" />
+          <Property Name="IsTeamLeader" Type="String" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="DataModel.GroupEmployee" FromRole="Employee" ToRole="Group" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PatrolScheme" Relationship="DataModel.EmployeePatrolScheme" FromRole="Employee" ToRole="PatrolScheme" />
+          <NavigationProperty Name="User" Relationship="DataModel.UserEmployee" FromRole="Employee" ToRole="User" />
+          <NavigationProperty Name="Department" Relationship="DataModel.EmployeeDepartment" FromRole="Employee" ToRole="Department" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="DataModel.EmployeeCompany" FromRole="Employee" ToRole="Company" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AcquisitionRecord" Relationship="DataModel.EmployeeAcquisitionRecord" FromRole="Employee" ToRole="AcquisitionRecord" />
+        </EntityType>
+        <Association Name="GroupEmployee">
+          <End Type="DataModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DataModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EmployeePatrolScheme">
+          <End Type="DataModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DataModel.PatrolScheme" Role="PatrolScheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatrolScheme">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="PictureUrl" Type="String" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="Available" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="DataModel.UserEmployee" FromRole="User" ToRole="Employee" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="UserEmployee">
+          <End Type="DataModel.User" Role="User" Multiplicity="*" />
+          <End Type="DataModel.Employee" Role="Employee" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EmployeeDepartment">
+          <End Type="DataModel.Employee" Role="Employee" Multiplicity="*" />
+          <End Type="DataModel.Department" Role="Department" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EmployeeCompany">
+          <End Type="DataModel.Employee" Role="Employee" Multiplicity="*" />
+          <End Type="DataModel.Company" Role="Company" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AcquisitionRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataUrl" Type="String" Nullable="false" />
+          <NavigationProperty Name="Dictionary" Relationship="DataModel.AcquisitionRecordDictionary" FromRole="AcquisitionRecord" ToRole="Dictionary" />
+          <Property Name="DataTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AcquisitionTime" Type="DateTime" Nullable="false" />
+          <Property Name="ReceptionTime" Type="DateTime" Nullable="true" />
+          <Property Name="Remark" Type="String" Nullable="true" />
+          <NavigationProperty Name="Employee" Relationship="DataModel.EmployeeAcquisitionRecord" FromRole="AcquisitionRecord" ToRole="Employee" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="AcquisitionRecordDictionary">
+          <End Type="DataModel.AcquisitionRecord" Role="AcquisitionRecord" Multiplicity="*" />
+          <End Type="DataModel.Dictionary" Role="Dictionary" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcquisitionRecord">
+              <PropertyRef Name="DataTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatrolReport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DefectTypeId" Type="String" Nullable="false" />
+          <Property Name="EmergenceId" Type="String" Nullable="false" />
+          <NavigationProperty Name="TownShip" Relationship="DataModel.PatrolReportTownShip" FromRole="PatrolReport" ToRole="TownShip" />
+          <Property Name="TownShipId" Type="Int32" Nullable="false" />
+          <Property Name="Village" Type="String" Nullable="true" />
+          <NavigationProperty Name="PatrolPoint" Relationship="DataModel.PatrolPointPatrolReport" FromRole="PatrolReport" ToRole="PatrolPoint" />
+          <Property Name="PatrolPointId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dictionary" Relationship="DataModel.DictionaryPatrolReport" FromRole="PatrolReport" ToRole="Dictionary" />
+          <NavigationProperty Name="PatrolRoute" Relationship="DataModel.PatrolRoutePatrolReport" FromRole="PatrolReport" ToRole="PatrolRoute" />
+          <Property Name="PatrolRouteId" Type="Int32" Nullable="false" />
+          <Property Name="ReportTime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="EmployeeAcquisitionRecord">
+          <End Type="DataModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DataModel.AcquisitionRecord" Role="AcquisitionRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AcquisitionRecord">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="DataModel.ProvinceCity" FromRole="Province" ToRole="City" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Province" Relationship="DataModel.ProvinceCity" FromRole="City" ToRole="Province" />
+          <Property Name="ProvinceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="County" Relationship="DataModel.CityCounty" FromRole="City" ToRole="County" />
+        </EntityType>
+        <EntityType Name="County">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="DataModel.CityCounty" FromRole="County" ToRole="City" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TownShip" Relationship="DataModel.CountyTownShip" FromRole="County" ToRole="TownShip" />
+        </EntityType>
+        <EntityType Name="TownShip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="County" Relationship="DataModel.CountyTownShip" FromRole="TownShip" ToRole="County" />
+          <Property Name="CountyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PatrolReport" Relationship="DataModel.PatrolReportTownShip" FromRole="TownShip" ToRole="PatrolReport" />
+        </EntityType>
+        <Association Name="ProvinceCity">
+          <End Type="DataModel.Province" Role="Province" Multiplicity="1" />
+          <End Type="DataModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CityCounty">
+          <End Type="DataModel.City" Role="City" Multiplicity="1" />
+          <End Type="DataModel.County" Role="County" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="County">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CountyTownShip">
+          <End Type="DataModel.County" Role="County" Multiplicity="1" />
+          <End Type="DataModel.TownShip" Role="TownShip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="County">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TownShip">
+              <PropertyRef Name="CountyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatrolReportTownShip">
+          <End Type="DataModel.PatrolReport" Role="PatrolReport" Multiplicity="*" />
+          <End Type="DataModel.TownShip" Role="TownShip" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TownShip">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatrolReport">
+              <PropertyRef Name="TownShipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatrolPoint">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoleTowerNumber" Type="String" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" >
+            <Documentation>
+              <LongDescription>巡检点的类型</LongDescription>
+            </Documentation>
+          </Property>
+          <Property Name="Longitude" Type="Double" Nullable="true" />
+          <Property Name="Latitude" Type="Double" Nullable="true" />
+          <NavigationProperty Name="PatrolReport" Relationship="DataModel.PatrolPointPatrolReport" FromRole="PatrolPoint" ToRole="PatrolReport" />
+          <Property Name="CreateTime" Type="DateTime" Nullable="true" />
+        </EntityType>
+        <Association Name="PatrolPointPatrolReport">
+          <End Type="DataModel.PatrolPoint" Role="PatrolPoint" Multiplicity="1" />
+          <End Type="DataModel.PatrolReport" Role="PatrolReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatrolPoint">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatrolReport">
+              <PropertyRef Name="PatrolPointId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DictionaryPatrolReport">
+          <End Type="DataModel.Dictionary" Role="Dictionary" Multiplicity="1" />
+          <End Type="DataModel.PatrolReport" Role="PatrolReport" Multiplicity="*" />
+        </Association>
+        <EntityType Name="PatrolRoute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="PatrolReport" Relationship="DataModel.PatrolRoutePatrolReport" FromRole="PatrolRoute" ToRole="PatrolReport" />
+          <NavigationProperty Name="PatrolScheme" Relationship="DataModel.PatrolRoutePatrolScheme" FromRole="PatrolRoute" ToRole="PatrolScheme" />
+        </EntityType>
+        <Association Name="PatrolRoutePatrolReport">
+          <End Type="DataModel.PatrolRoute" Role="PatrolRoute" Multiplicity="1" />
+          <End Type="DataModel.PatrolReport" Role="PatrolReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatrolRoute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatrolReport">
+              <PropertyRef Name="PatrolRouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatrolRoutePatrolScheme">
+          <End Type="DataModel.PatrolRoute" Role="PatrolRoute" Multiplicity="1" />
+          <End Type="DataModel.PatrolScheme" Role="PatrolScheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatrolRoute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatrolScheme">
+              <PropertyRef Name="PatrolRouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatrolDefect">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Dictionary" Relationship="DataModel.DictionaryPatrolDefect" FromRole="PatrolDefect" ToRole="Dictionary" />
+          <Property Name="DefectTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="DictionaryPatrolDefect">
+          <End Type="DataModel.Dictionary" Role="Dictionary" Multiplicity="1" />
+          <End Type="DataModel.PatrolDefect" Role="PatrolDefect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dictionary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatrolDefect">
+              <PropertyRef Name="DefectTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="DataModelContainer">
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Company)">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatrolScheme">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.PatrolScheme)">
+        <MappingFragment StoreEntitySet="PatrolScheme">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DefectTypeId" ColumnName="DefectTypeId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="PatrolRouteId" ColumnName="PatrolRouteId" />
+          <ScalarProperty Name="SchemeDate" ColumnName="SchemeDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dictionary">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Dictionary)">
+        <MappingFragment StoreEntitySet="Dictionary">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menu">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Menu)">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Department">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Department)">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Group)">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employee">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Employee)">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="IsTeamLeader" ColumnName="IsTeamLeader" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.User)">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AcquisitionRecord">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.AcquisitionRecord)">
+        <MappingFragment StoreEntitySet="AcquisitionRecord">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DataUrl" ColumnName="DataUrl" />
+          <ScalarProperty Name="DataTypeId" ColumnName="DataTypeId" />
+          <ScalarProperty Name="AcquisitionTime" ColumnName="AcquisitionTime" />
+          <ScalarProperty Name="ReceptionTime" ColumnName="ReceptionTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatrolReport">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.PatrolReport)">
+        <MappingFragment StoreEntitySet="PatrolReport">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DefectTypeId" ColumnName="DefectTypeId" />
+          <ScalarProperty Name="EmergenceId" ColumnName="EmergenceId" />
+          <ScalarProperty Name="TownShipId" ColumnName="TownShipId" />
+          <ScalarProperty Name="Village" ColumnName="Village" />
+          <ScalarProperty Name="PatrolPointId" ColumnName="PatrolPointId" />
+          <ScalarProperty Name="PatrolRouteId" ColumnName="PatrolRouteId" />
+          <ScalarProperty Name="ReportTime" ColumnName="ReportTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Province">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Province)">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.City)">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="County">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.County)">
+        <MappingFragment StoreEntitySet="County">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TownShip">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.TownShip)">
+        <MappingFragment StoreEntitySet="TownShip">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CountyId" ColumnName="CountyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatrolPoint">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.PatrolPoint)">
+        <MappingFragment StoreEntitySet="PatrolPoint">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PoleTowerNumber" ColumnName="PoleTowerNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatrolRoute">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.PatrolRoute)">
+        <MappingFragment StoreEntitySet="PatrolRoute">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatrolDefect">
+      <EntityTypeMapping TypeName="IsTypeOf(DataModel.PatrolDefect)">
+        <MappingFragment StoreEntitySet="PatrolDefect">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DefectTypeId" ColumnName="DefectTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="DictionaryPatrolReport" TypeName="DataModel.DictionaryPatrolReport" StoreEntitySet="PatrolReport">
+      <EndProperty Name="Dictionary">
+        <ScalarProperty Name="Id" ColumnName="Dictionary_Id" />
+      </EndProperty>
+      <EndProperty Name="PatrolReport">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

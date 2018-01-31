@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d98f7764f7a64e2cb8b7ac54066aec7c" Name="Diagram1" ZoomLevel="110" >
+        <EntityTypeShape EntityType="DataModel.Company" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DataModel.PatrolScheme" Width="1.5" PointX="5.5" PointY="4.25" />
+        <EntityTypeShape EntityType="DataModel.Dictionary" Width="1.5" PointX="5.5" PointY="7.625" />
+        <AssociationConnector Association="DataModel.PatrolSchemeDictionary" />
+        <EntityTypeShape EntityType="DataModel.Menu" Width="1.5" PointX="13.625" PointY="2" />
+        <EntityTypeShape EntityType="DataModel.Department" Width="1.5" PointX="2.75" PointY="0.5" />
+        <AssociationConnector Association="DataModel.CompanyDepartment" />
+        <EntityTypeShape EntityType="DataModel.Group" Width="1.5" PointX="5.125" PointY="0.5" />
+        <AssociationConnector Association="DataModel.DepartmentGroup" />
+        <EntityTypeShape EntityType="DataModel.Employee" Width="1.5" PointX="7.5" PointY="0.5" />
+        <AssociationConnector Association="DataModel.GroupEmployee" />
+        <AssociationConnector Association="DataModel.EmployeePatrolScheme" />
+        <EntityTypeShape EntityType="DataModel.User" Width="1.5" PointX="9.875" PointY="0.5" />
+        <AssociationConnector Association="DataModel.UserEmployee" />
+        <AssociationConnector Association="DataModel.EmployeeDepartment" />
+        <AssociationConnector Association="DataModel.EmployeeCompany" />
+        <EntityTypeShape EntityType="DataModel.AcquisitionRecord" Width="1.5" PointX="7.875" PointY="4.25" />
+        <AssociationConnector Association="DataModel.AcquisitionRecordDictionary" />
+        <EntityTypeShape EntityType="DataModel.PatrolReport" Width="1.5" PointX="2.875" PointY="4.25" />
+        <AssociationConnector Association="DataModel.EmployeeAcquisitionRecord" />
+        <EntityTypeShape EntityType="DataModel.Province" Width="1.5" PointX="8.875" PointY="10.125" />
+        <EntityTypeShape EntityType="DataModel.City" Width="1.5" PointX="6.875" PointY="10.125" />
+        <EntityTypeShape EntityType="DataModel.County" Width="1.5" PointX="4.875" PointY="10.125" />
+        <EntityTypeShape EntityType="DataModel.TownShip" Width="1.5" PointX="2.875" PointY="10.125" />
+        <AssociationConnector Association="DataModel.ProvinceCity" />
+        <AssociationConnector Association="DataModel.CityCounty" />
+        <AssociationConnector Association="DataModel.CountyTownShip" />
+        <AssociationConnector Association="DataModel.PatrolReportTownShip" />
+        <EntityTypeShape EntityType="DataModel.PatrolPoint" Width="1.5" PointX="0.5" PointY="5.75" />
+        <AssociationConnector Association="DataModel.PatrolPointPatrolReport" />
+        <AssociationConnector Association="DataModel.DictionaryPatrolReport" />
+        <EntityTypeShape EntityType="DataModel.PatrolRoute" Width="1.5" PointX="0.5" PointY="3.75" />
+        <AssociationConnector Association="DataModel.PatrolRoutePatrolReport" />
+        <AssociationConnector Association="DataModel.PatrolRoutePatrolScheme" />
+        <EntityTypeShape EntityType="DataModel.PatrolDefect" Width="1.5" PointX="10.625" PointY="4.625" />
+        <AssociationConnector Association="DataModel.DictionaryPatrolDefect" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
