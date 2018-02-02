@@ -5,16 +5,10 @@
 }
 
 
-@Html.ActionLink("添加", "AddScheme", "Transaction", new { }, new { @class = "btn btn-primary btn-lg", style = "color:#ffffff" })
+@Html.ActionLink("添加", "AddScheme", "Transaction", new { }, new { @class = "btn btn-primary btn-lg"})
 
 
 <div class="box">
-    <ext:DropDownList runat="server" ID="DropDownList1">
-   2:      <ext:ListItem Text="选项 1" Value="Value1" Selected="true" />
-   3:      <ext:ListItem Text="选项 2（不可选择）" Value="Value2" EnableSelect="false" />
-   4:      <ext:ListItem Text="选项 3（不可选择）" Value="Value3" EnableSelect="false" />
-   5:      <ext:ListItem Text="选项 4" Value="Value4" />
-   6:  </ext:DropDownList>
     @*<div class="box-header">
             <h3 class="box-title">Hover Data Table</h3>
         </div>*@

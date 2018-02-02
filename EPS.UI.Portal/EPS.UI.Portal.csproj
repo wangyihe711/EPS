@@ -153,7 +153,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\SysmanageController.cs" />
+    <Compile Include="Controllers\SystemManagementController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -8197,10 +8197,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Transaction\SchemeList.cshtml" />
-    <Content Include="Views\Sysmanage\Staff.cshtml" />
-    <Content Include="Views\Sysmanage\Department.cshtml" />
-    <Content Include="Views\Sysmanage\Group.cshtml" />
-    <Content Include="Views\Transaction\ResultList.cshtml" />
+    <Content Include="Views\SystemManagement\Employee.cshtml" />
+    <Content Include="Views\SystemManagement\Department.cshtml" />
+    <Content Include="Views\SystemManagement\Group.cshtml" />
+    <Content Include="Views\Transaction\PatrolReportList.cshtml" />
     <Content Include="Views\Transaction\AddScheme.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="wwwroot\css\adminlte.css.map" />
@@ -8394,9 +8394,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Company\" />
-    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

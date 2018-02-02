@@ -1,0 +1,66 @@
+﻿@using EPS.UI.Portal.Models
+@{
+    ViewBag.Title = "PatrolReportList";
+    List<PatrolReportModel> patrolReportList = ViewBag.Model as List<PatrolReportModel>;
+}
+
+<select name="ddlTest" id="ddlTest">
+    <option value="0">巡检部</option>
+    <option value="1">抢修部</option>
+</select>
+
+<select name="ddlTest" id="ddlTest">
+    <option value="0">巡检一组</option>
+    <option value="1">巡检二组</option>
+    <option value="2">抢修一组</option>
+    <option value="3">抢修二组</option>
+</select>
+
+<select name="ddlTest" id="ddlTest">
+    <option value="0">线路一</option>
+    <option value="1">线路二</option>
+    <option value="1">线路三</option>
+</select>
+
+
+@*<div class="box-header">
+        <h3 class="box-title">Hover Data Table</h3>
+    </div>*@
+<!-- /.box-header -->
+<div class="box-body">
+    <table id="example2" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>计划路线名</th>
+                <th>杆塔号</th>
+                <th>缺陷编码</th>
+                <th>缺陷类别</th>
+                <th>巡检时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var patrolReport in patrolReportList)
+            {
+                <tr>
+                    <td>@patrolReport.PatrolRouteName<input type="hidden" name="patrolRouteId" value=@patrolReport.PatrolRouteId /></td>
+                    <td>@patrolReport.PoleTowerName</td>
+                    <td>@patrolReport.DefectCode</td>
+                    <td>@patrolReport.DefectType</td>
+                    <td>@patrolReport.ReportTime.ToString("yyyy-MM-dd")</td>
+
+                    @*<td>@patrolReport.DefectType<input type="hidden" name="defectTypeId" value=@patrolReport.DefectTypeId /></td>*@
+                </tr>
+            }
+        </tbody>
+        @*<tfoot>
+                <tr>
+                    <th>Rendering engine</th>
+                    <th>Browser</th>
+                    <th>Platform(s)</th>
+                    <th>Engine version</th>
+                    <th>CSS grade</th>
+                </tr>
+            </tfoot>*@
+    </table>
+</div>
+<!-- /.box-body -->

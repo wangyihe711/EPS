@@ -50,7 +50,7 @@ namespace EPS.UI.Portal.Controllers
             return View();
         }
        
-        public ActionResult ResultList()
+        public ActionResult PatrolReportList()
         {
             List<PatrolReport> patrolReportList = bll1.GetElementList().Result;
             List<PatrolReportModel> modelList = new List<PatrolReportModel>();
