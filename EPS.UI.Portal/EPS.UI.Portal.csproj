@@ -152,11 +152,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SysmanageController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmployeeModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\PatrolReportModel.cs" />
     <Compile Include="Models\PatrolSchemeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -7410,10 +7413,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Transaction\SchemeList.cshtml" />
+    <Content Include="Views\Sysmanage\Staff.cshtml" />
+    <Content Include="Views\Sysmanage\Department.cshtml" />
+    <Content Include="Views\Sysmanage\Group.cshtml" />
+    <Content Include="Views\Transaction\ResultList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Company\" />
+    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

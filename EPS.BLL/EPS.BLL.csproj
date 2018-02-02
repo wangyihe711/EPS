@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseService.cs" />
+    <Compile Include="EmployeeService.cs" />
     <Compile Include="MenuService.cs" />
     <Compile Include="CompanyService.cs" />
+    <Compile Include="PatrolReportService.cs" />
     <Compile Include="PatrolSchemeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

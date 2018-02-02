@@ -48,8 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseDal.cs" />
+    <Compile Include="EmployeeDal.cs" />
     <Compile Include="MenuDal.cs" />
     <Compile Include="CompanyDal.cs" />
+    <Compile Include="PatrolReportDal.cs" />
     <Compile Include="PatrolSchemeDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
