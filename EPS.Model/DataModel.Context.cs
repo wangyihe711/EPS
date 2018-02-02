@@ -38,7 +38,6 @@ namespace EPS.Model
         public virtual DbSet<Province> Province { get; set; }
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<County> County { get; set; }
-        public virtual DbSet<TownShip> TownShip { get; set; }
         public virtual DbSet<PatrolPoint> PatrolPoint { get; set; }
         public virtual DbSet<PatrolRoute> PatrolRoute { get; set; }
         public virtual DbSet<PatrolDefect> PatrolDefect { get; set; }

@@ -24,11 +24,9 @@ namespace EPS.UI.Portal.Controllers
             var result = bll.Login(username, password);
             if (!result.State)
             {
-                //ViewData["msg"] = result.Message;
                 return Content(result.Message);
             }
-
-            //RedirectToAction("Index", "Home");
+            
             Response.Redirect("/Home/Index");
             return View();
         }

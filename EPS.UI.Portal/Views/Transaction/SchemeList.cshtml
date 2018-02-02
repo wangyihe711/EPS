@@ -4,7 +4,9 @@
     List<PatrolSchemeModel> patrolSchemeList = ViewBag.Model as List<PatrolSchemeModel>;
 }
 
-<button type="button" class="btn btn-block btn-primary btn-lg">@Html.ActionLink("添加", "AddScheme", "Transaction", new { }, new { style = "color:#ffffff" })</button>
+
+@Html.ActionLink("添加", "AddScheme", "Transaction", new { }, new { @class = "btn btn-primary btn-lg", style = "color:#ffffff" })
+
 
 <div class="box">
     @*<div class="box-header">
@@ -34,7 +36,10 @@
                         <td>@patrolScheme.SchemeDate.ToString("yyyy-MM-dd")</td>
                         <td>@patrolScheme.StartDate.ToString("yyyy-MM-dd")</td>
                         <td>@patrolScheme.EndDate.ToString("yyyy-MM-dd")</td>
-                        <td><input type="submit" value="删除" /></td>
+                        <td>
+                            @Html.ActionLink("删除", "DeleteSchemeById", "Transaction", new { schemeId = patrolScheme.Id }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("更新", "UpdateScheme", "Transaction", new { schemeId = patrolScheme.Id }, new { @class = "btn btn-primary" })
+                        </td>
                         @*<td>@patrolScheme.DefectType<input type="hidden" name="defectTypeId" value=@patrolScheme.DefectTypeId /></td>*@
                     </tr>
                 }

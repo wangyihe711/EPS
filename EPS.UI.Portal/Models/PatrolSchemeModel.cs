@@ -11,12 +11,6 @@ namespace EPS.UI.Portal.Models
 
         public string Number { get; set; }
 
-        public int DefectTypeId { get; set; }
-
-        public string DefectCode { get; set; }
-
-        public string DefectType { get; set; }
-
         public int PatrolRouteId { get; set; }
 
         public string PatrolRouteName { get; set; }
@@ -30,5 +24,7 @@ namespace EPS.UI.Portal.Models
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
+
+        public string DateRange { get; set; }
     }
 }

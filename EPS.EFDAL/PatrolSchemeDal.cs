@@ -9,5 +9,7 @@ namespace EPS.EFDAL
 {
     public class PatrolSchemeDal : BaseDal<PatrolScheme>
     {
+        DataModelContainer db = new DataModelContainer();
+        
     }
 }

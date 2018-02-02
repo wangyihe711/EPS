@@ -4,10 +4,6 @@
     <EntitySet Name="Company" EntityType="DataModel.Company" />
     <EntitySet Name="PatrolScheme" EntityType="DataModel.PatrolScheme" />
     <EntitySet Name="Dictionary" EntityType="DataModel.Dictionary" />
-    <AssociationSet Name="PatrolSchemeDictionary" Association="DataModel.PatrolSchemeDictionary">
-      <End Role="PatrolScheme" EntitySet="PatrolScheme" />
-      <End Role="Dictionary" EntitySet="Dictionary" />
-    </AssociationSet>
     <EntitySet Name="Menu" EntityType="DataModel.Menu" />
     <EntitySet Name="Department" EntityType="DataModel.Department" />
     <AssociationSet Name="CompanyDepartment" Association="DataModel.CompanyDepartment">
@@ -54,7 +50,6 @@
     <EntitySet Name="Province" EntityType="DataModel.Province" />
     <EntitySet Name="City" EntityType="DataModel.City" />
     <EntitySet Name="County" EntityType="DataModel.County" />
-    <EntitySet Name="TownShip" EntityType="DataModel.TownShip" />
     <AssociationSet Name="ProvinceCity" Association="DataModel.ProvinceCity">
       <End Role="Province" EntitySet="Province" />
       <End Role="City" EntitySet="City" />
@@ -62,14 +57,6 @@
     <AssociationSet Name="CityCounty" Association="DataModel.CityCounty">
       <End Role="City" EntitySet="City" />
       <End Role="County" EntitySet="County" />
-    </AssociationSet>
-    <AssociationSet Name="CountyTownShip" Association="DataModel.CountyTownShip">
-      <End Role="County" EntitySet="County" />
-      <End Role="TownShip" EntitySet="TownShip" />
-    </AssociationSet>
-    <AssociationSet Name="PatrolReportTownShip" Association="DataModel.PatrolReportTownShip">
-      <End Role="PatrolReport" EntitySet="PatrolReport" />
-      <End Role="TownShip" EntitySet="TownShip" />
     </AssociationSet>
     <EntitySet Name="PatrolPoint" EntityType="DataModel.PatrolPoint" />
     <AssociationSet Name="PatrolPointPatrolReport" Association="DataModel.PatrolPointPatrolReport">
@@ -114,12 +101,6 @@
         <LongDescription>编号</LongDescription>
       </Documentation>
     </Property>
-    <NavigationProperty Name="Dictionary" Relationship="DataModel.PatrolSchemeDictionary" FromRole="PatrolScheme" ToRole="Dictionary" />
-    <Property Name="DefectTypeId" Type="Int32" Nullable="false">
-      <Documentation>
-        <LongDescription>缺陷类型的id</LongDescription>
-      </Documentation>
-    </Property>
     <NavigationProperty Name="Employee" Relationship="DataModel.EmployeePatrolScheme" FromRole="PatrolScheme" ToRole="Employee" />
     <Property Name="EmployeeId" Type="Int32" Nullable="false">
       <Documentation>
@@ -143,23 +124,10 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Code" Type="String" Nullable="false" />
     <Property Name="Type" Type="String" Nullable="false" />
-    <NavigationProperty Name="PatrolScheme" Relationship="DataModel.PatrolSchemeDictionary" FromRole="Dictionary" ToRole="PatrolScheme" />
     <NavigationProperty Name="AcquisitionRecord" Relationship="DataModel.AcquisitionRecordDictionary" FromRole="Dictionary" ToRole="AcquisitionRecord" />
     <NavigationProperty Name="PatrolReport" Relationship="DataModel.DictionaryPatrolReport" FromRole="Dictionary" ToRole="PatrolReport" />
     <NavigationProperty Name="PatrolDefect" Relationship="DataModel.DictionaryPatrolDefect" FromRole="Dictionary" ToRole="PatrolDefect" />
   </EntityType>
-  <Association Name="PatrolSchemeDictionary">
-    <End Type="DataModel.PatrolScheme" Role="PatrolScheme" Multiplicity="*" />
-    <End Type="DataModel.Dictionary" Role="Dictionary" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Dictionary">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PatrolScheme">
-        <PropertyRef Name="DefectTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Menu">
     <Key>
       <PropertyRef Name="Id" />
@@ -168,6 +136,7 @@
     <Property Name="Name" Type="String" Nullable="false" />
     <Property Name="ParentId" Type="Int32" Nullable="false" />
     <Property Name="Link" Type="String" Nullable="true" />
+    <Property Name="IconUrl" Type="String" Nullable="true" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -222,7 +191,7 @@
     <Property Name="Name" Type="String" Nullable="false" />
     <Property Name="Age" Type="Int32" Nullable="true" />
     <Property Name="Gender" Type="String" Nullable="true" />
-    <Property Name="IsTeamLeader" Type="String" Nullable="false" />
+    <Property Name="IsTeamLeader" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Group" Relationship="DataModel.GroupEmployee" FromRole="Employee" ToRole="Group" />
     <Property Name="GroupId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="PatrolScheme" Relationship="DataModel.EmployeePatrolScheme" FromRole="Employee" ToRole="PatrolScheme" />
@@ -264,7 +233,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserName" Type="String" Nullable="false" />
     <Property Name="Password" Type="String" Nullable="false" />
-    <Property Name="PictureUrl" Type="String" Nullable="false" />
+    <Property Name="PictureUrl" Type="String" Nullable="true" />
     <Property Name="CreateTime" Type="DateTime" Nullable="false" />
     <Property Name="Available" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Employee" Relationship="DataModel.UserEmployee" FromRole="User" ToRole="Employee" />
@@ -339,8 +308,6 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DefectTypeId" Type="String" Nullable="false" />
     <Property Name="EmergenceId" Type="String" Nullable="false" />
-    <NavigationProperty Name="TownShip" Relationship="DataModel.PatrolReportTownShip" FromRole="PatrolReport" ToRole="TownShip" />
-    <Property Name="TownShipId" Type="Int32" Nullable="false" />
     <Property Name="Village" Type="String" Nullable="true" />
     <NavigationProperty Name="PatrolPoint" Relationship="DataModel.PatrolPointPatrolReport" FromRole="PatrolReport" ToRole="PatrolPoint" />
     <Property Name="PatrolPointId" Type="Int32" Nullable="false" />
@@ -387,17 +354,6 @@
     <Property Name="Name" Type="String" Nullable="false" />
     <NavigationProperty Name="City" Relationship="DataModel.CityCounty" FromRole="County" ToRole="City" />
     <Property Name="CityId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="TownShip" Relationship="DataModel.CountyTownShip" FromRole="County" ToRole="TownShip" />
-  </EntityType>
-  <EntityType Name="TownShip">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" />
-    <NavigationProperty Name="County" Relationship="DataModel.CountyTownShip" FromRole="TownShip" ToRole="County" />
-    <Property Name="CountyId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="PatrolReport" Relationship="DataModel.PatrolReportTownShip" FromRole="TownShip" ToRole="PatrolReport" />
   </EntityType>
   <Association Name="ProvinceCity">
     <End Type="DataModel.Province" Role="Province" Multiplicity="1" />
@@ -420,30 +376,6 @@
       </Principal>
       <Dependent Role="County">
         <PropertyRef Name="CityId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CountyTownShip">
-    <End Type="DataModel.County" Role="County" Multiplicity="1" />
-    <End Type="DataModel.TownShip" Role="TownShip" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="County">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TownShip">
-        <PropertyRef Name="CountyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PatrolReportTownShip">
-    <End Type="DataModel.PatrolReport" Role="PatrolReport" Multiplicity="*" />
-    <End Type="DataModel.TownShip" Role="TownShip" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="TownShip">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PatrolReport">
-        <PropertyRef Name="TownShipId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 01/30/2018 10:59:46
+-- Date Created: 02/02/2018 17:38:49
 -- Generated from EDMX file: E:\project\EPS\EPS.Model\DataModel.edmx
 -- --------------------------------------------------
 
@@ -17,8 +17,53 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_PatrolSchemeDictionary]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PatrolScheme] DROP CONSTRAINT [FK_PatrolSchemeDictionary];
+IF OBJECT_ID(N'[dbo].[FK_CompanyDepartment]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Department] DROP CONSTRAINT [FK_CompanyDepartment];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DepartmentGroup]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Group] DROP CONSTRAINT [FK_DepartmentGroup];
+GO
+IF OBJECT_ID(N'[dbo].[FK_GroupEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employee] DROP CONSTRAINT [FK_GroupEmployee];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmployeePatrolScheme]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PatrolScheme] DROP CONSTRAINT [FK_EmployeePatrolScheme];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserEmployee]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[User] DROP CONSTRAINT [FK_UserEmployee];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmployeeDepartment]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employee] DROP CONSTRAINT [FK_EmployeeDepartment];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmployeeCompany]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Employee] DROP CONSTRAINT [FK_EmployeeCompany];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AcquisitionRecordDictionary]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AcquisitionRecord] DROP CONSTRAINT [FK_AcquisitionRecordDictionary];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmployeeAcquisitionRecord]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AcquisitionRecord] DROP CONSTRAINT [FK_EmployeeAcquisitionRecord];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProvinceCity]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[City] DROP CONSTRAINT [FK_ProvinceCity];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CityCounty]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[County] DROP CONSTRAINT [FK_CityCounty];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatrolPointPatrolReport]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PatrolReport] DROP CONSTRAINT [FK_PatrolPointPatrolReport];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DictionaryPatrolReport]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PatrolReport] DROP CONSTRAINT [FK_DictionaryPatrolReport];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatrolRoutePatrolReport]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PatrolReport] DROP CONSTRAINT [FK_PatrolRoutePatrolReport];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PatrolRoutePatrolScheme]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PatrolScheme] DROP CONSTRAINT [FK_PatrolRoutePatrolScheme];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DictionaryPatrolDefect]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PatrolDefect] DROP CONSTRAINT [FK_DictionaryPatrolDefect];
 GO
 
 -- --------------------------------------------------
@@ -37,6 +82,42 @@ GO
 IF OBJECT_ID(N'[dbo].[Menu]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Menu];
 GO
+IF OBJECT_ID(N'[dbo].[Department]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Department];
+GO
+IF OBJECT_ID(N'[dbo].[Group]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Group];
+GO
+IF OBJECT_ID(N'[dbo].[Employee]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Employee];
+GO
+IF OBJECT_ID(N'[dbo].[User]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[User];
+GO
+IF OBJECT_ID(N'[dbo].[AcquisitionRecord]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AcquisitionRecord];
+GO
+IF OBJECT_ID(N'[dbo].[PatrolReport]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PatrolReport];
+GO
+IF OBJECT_ID(N'[dbo].[Province]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Province];
+GO
+IF OBJECT_ID(N'[dbo].[City]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[City];
+GO
+IF OBJECT_ID(N'[dbo].[County]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[County];
+GO
+IF OBJECT_ID(N'[dbo].[PatrolPoint]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PatrolPoint];
+GO
+IF OBJECT_ID(N'[dbo].[PatrolRoute]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PatrolRoute];
+GO
+IF OBJECT_ID(N'[dbo].[PatrolDefect]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PatrolDefect];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -53,7 +134,6 @@ GO
 CREATE TABLE [dbo].[PatrolScheme] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Number] nvarchar(max)  NOT NULL,
-    [DefectTypeId] int  NOT NULL,
     [EmployeeId] int  NOT NULL,
     [PatrolRouteId] int  NOT NULL,
     [SchemeDate] datetime  NOT NULL,
@@ -75,7 +155,8 @@ CREATE TABLE [dbo].[Menu] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [ParentId] int  NOT NULL,
-    [Link] nvarchar(max)  NULL
+    [Link] nvarchar(max)  NULL,
+    [IconUrl] nvarchar(max)  NULL
 );
 GO
 
@@ -101,7 +182,7 @@ CREATE TABLE [dbo].[Employee] (
     [Name] nvarchar(max)  NOT NULL,
     [Age] int  NULL,
     [Gender] nvarchar(max)  NULL,
-    [IsTeamLeader] nvarchar(max)  NOT NULL,
+    [IsTeamLeader] bit  NOT NULL,
     [GroupId] int  NOT NULL,
     [DepartmentId] int  NOT NULL,
     [CompanyId] int  NOT NULL
@@ -113,7 +194,7 @@ CREATE TABLE [dbo].[User] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [UserName] nvarchar(max)  NOT NULL,
     [Password] nvarchar(max)  NOT NULL,
-    [PictureUrl] nvarchar(max)  NOT NULL,
+    [PictureUrl] nvarchar(max)  NULL,
     [CreateTime] datetime  NOT NULL,
     [Available] bit  NOT NULL,
     [EmployeeId] int  NOT NULL
@@ -137,7 +218,6 @@ CREATE TABLE [dbo].[PatrolReport] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [DefectTypeId] nvarchar(max)  NOT NULL,
     [EmergenceId] nvarchar(max)  NOT NULL,
-    [TownShipId] int  NOT NULL,
     [Village] nvarchar(max)  NULL,
     [PatrolPointId] int  NOT NULL,
     [PatrolRouteId] int  NOT NULL,
@@ -166,14 +246,6 @@ CREATE TABLE [dbo].[County] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [CityId] int  NOT NULL
-);
-GO
-
--- Creating table 'TownShip'
-CREATE TABLE [dbo].[TownShip] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL,
-    [CountyId] int  NOT NULL
 );
 GO
 
@@ -285,12 +357,6 @@ ADD CONSTRAINT [PK_County]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'TownShip'
-ALTER TABLE [dbo].[TownShip]
-ADD CONSTRAINT [PK_TownShip]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'PatrolPoint'
 ALTER TABLE [dbo].[PatrolPoint]
 ADD CONSTRAINT [PK_PatrolPoint]
@@ -312,21 +378,6 @@ GO
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [DefectTypeId] in table 'PatrolScheme'
-ALTER TABLE [dbo].[PatrolScheme]
-ADD CONSTRAINT [FK_PatrolSchemeDictionary]
-    FOREIGN KEY ([DefectTypeId])
-    REFERENCES [dbo].[Dictionary]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PatrolSchemeDictionary'
-CREATE INDEX [IX_FK_PatrolSchemeDictionary]
-ON [dbo].[PatrolScheme]
-    ([DefectTypeId]);
-GO
 
 -- Creating foreign key on [CompanyId] in table 'Department'
 ALTER TABLE [dbo].[Department]
@@ -491,36 +542,6 @@ GO
 CREATE INDEX [IX_FK_CityCounty]
 ON [dbo].[County]
     ([CityId]);
-GO
-
--- Creating foreign key on [CountyId] in table 'TownShip'
-ALTER TABLE [dbo].[TownShip]
-ADD CONSTRAINT [FK_CountyTownShip]
-    FOREIGN KEY ([CountyId])
-    REFERENCES [dbo].[County]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CountyTownShip'
-CREATE INDEX [IX_FK_CountyTownShip]
-ON [dbo].[TownShip]
-    ([CountyId]);
-GO
-
--- Creating foreign key on [TownShipId] in table 'PatrolReport'
-ALTER TABLE [dbo].[PatrolReport]
-ADD CONSTRAINT [FK_PatrolReportTownShip]
-    FOREIGN KEY ([TownShipId])
-    REFERENCES [dbo].[TownShip]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PatrolReportTownShip'
-CREATE INDEX [IX_FK_PatrolReportTownShip]
-ON [dbo].[PatrolReport]
-    ([TownShipId]);
 GO
 
 -- Creating foreign key on [PatrolPointId] in table 'PatrolReport'

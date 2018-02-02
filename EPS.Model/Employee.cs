@@ -26,7 +26,7 @@ namespace EPS.Model
         public string Name { get; set; }
         public Nullable<int> Age { get; set; }
         public string Gender { get; set; }
-        public string IsTeamLeader { get; set; }
+        public bool IsTeamLeader { get; set; }
         public int GroupId { get; set; }
         public int DepartmentId { get; set; }
         public int CompanyId { get; set; }

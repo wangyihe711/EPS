@@ -16,14 +16,12 @@ namespace EPS.Model
     {
         public int Id { get; set; }
         public string Number { get; set; }
-        public int DefectTypeId { get; set; }
         public int EmployeeId { get; set; }
         public int PatrolRouteId { get; set; }
         public System.DateTime SchemeDate { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
     
-        public virtual Dictionary Dictionary { get; set; }
         public virtual Employee Employee { get; set; }
         public virtual PatrolRoute PatrolRoute { get; set; }
     }

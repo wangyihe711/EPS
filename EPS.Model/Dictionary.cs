@@ -17,7 +17,6 @@ namespace EPS.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Dictionary()
         {
-            this.PatrolScheme = new HashSet<PatrolScheme>();
             this.AcquisitionRecord = new HashSet<AcquisitionRecord>();
             this.PatrolReport = new HashSet<PatrolReport>();
             this.PatrolDefect = new HashSet<PatrolDefect>();
@@ -27,8 +26,6 @@ namespace EPS.Model
         public string Code { get; set; }
         public string Type { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PatrolScheme> PatrolScheme { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AcquisitionRecord> AcquisitionRecord { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

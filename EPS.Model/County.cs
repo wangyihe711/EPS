@@ -14,18 +14,10 @@ namespace EPS.Model
     
     public partial class County
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public County()
-        {
-            this.TownShip = new HashSet<TownShip>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
         public int CityId { get; set; }
     
         public virtual City City { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TownShip> TownShip { get; set; }
     }
 }

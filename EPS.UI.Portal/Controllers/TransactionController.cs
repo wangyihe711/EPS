@@ -32,9 +32,6 @@ namespace EPS.UI.Portal.Controllers
                 {
                     Id = item.Id,
                     Number = item.Number,
-                    DefectTypeId = item.DefectTypeId,
-                    DefectCode = item.Dictionary.Code,
-                    DefectType = item.Dictionary.Type,
                     EmployeeId = item.EmployeeId,
                     EmployeeName = item.Employee.Name,
                     PatrolRouteId = item.PatrolRouteId,
@@ -50,9 +47,116 @@ namespace EPS.UI.Portal.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Adds the scheme.
+        /// </summary>
+        /// <returns></returns>
+        /// 创建者：叶烨星
+        /// 创建时间：2018/2/1 16:45
+        /// 修改者：
+        /// 修改时间：
         public ActionResult AddScheme()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AddScheme(PatrolSchemeModel model)
+        {
+            PatrolScheme patrolScheme = new PatrolScheme()
+            {
+                EmployeeId = model.EmployeeId,
+                Number = model.Number,
+                PatrolRouteId = model.PatrolRouteId,
+                SchemeDate = DateTime.Now,
+                StartDate = DateTime.Parse(model.DateRange.Split(new char[] { '-' })[0].Trim()),
+                EndDate = DateTime.Parse(model.DateRange.Split(new char[] { '-' })[1].Trim()),
+            };
+            var result = bll.Add(patrolScheme);
+            if (!result.State)
+            {
+                return Content(result.Message);
+            }
+
+            return RedirectToAction("SchemeList");
+        }
+
+        /// <summary>
+        /// Deletes the scheme by id
+        /// </summary>
+        /// <param name="schemeId">The scheme id</param>
+        /// <returns></returns>
+        /// 创建者：叶烨星
+        /// 创建时间：2018/2/1 16:45
+        /// 修改者：
+        /// 修改时间：
+        public ActionResult DeleteSchemeById(int schemeId)
+        {
+            PatrolScheme scheme = bll.GetElementById(schemeId).Result;
+            PatrolSchemeModel model = new PatrolSchemeModel
+            {
+                Id = scheme.Id,
+                Number = scheme.Number,
+                EmployeeId = scheme.EmployeeId,
+                EmployeeName = scheme.Employee.Name,
+                PatrolRouteId = scheme.PatrolRouteId,
+                PatrolRouteName = scheme.PatrolRoute.Name,
+                SchemeDate = scheme.SchemeDate,
+                StartDate = scheme.StartDate,
+                EndDate = scheme.EndDate
+            };
+            return View(model);
+        }
+
+
+        /// <summary>
+        /// Deletes the scheme by id
+        /// </summary>
+        /// <param name="schemeId">The scheme id</param>
+        /// <returns></returns>
+        /// 创建者：叶烨星
+        /// 创建时间：2018/2/1 16:45
+        /// 修改者：
+        /// 修改时间：
+        [HttpPost]
+        public ActionResult DeleteSchemeById(int schemeId, FormCollection fc)
+        {
+            bll.DeleteById(schemeId);
+            return RedirectToAction("SchemeList");
+        }
+
+        /// <summary>
+        /// Updates the scheme.
+        /// </summary>
+        /// <param name="schemeId">The scheme id</param>
+        /// <returns></returns>
+        /// 创建者：叶烨星
+        /// 创建时间：2018/2/1 17:11
+        /// 修改者：
+        /// 修改时间：
+        public ActionResult UpdateScheme(int schemeId)
+        {
+            PatrolScheme scheme = bll.GetElementById(schemeId).Result;
+            PatrolSchemeModel model = new PatrolSchemeModel
+            {
+                Id = scheme.Id,
+                Number = scheme.Number,
+                EmployeeId = scheme.EmployeeId,
+                EmployeeName = scheme.Employee.Name,
+                PatrolRouteId = scheme.PatrolRouteId,
+                PatrolRouteName = scheme.PatrolRoute.Name,
+                SchemeDate = scheme.SchemeDate,
+                StartDate = scheme.StartDate,
+                EndDate = scheme.EndDate
+            };
+            return View(model);
+        }
+
+        //[HttpPost]
+        //public ActionResult UpdateScheme(PatrolSchemeModel scheme, FormCollection fc)
+        //{
+        //    int schemeId = scheme.Id;
+
+        //}
     }
 }

@@ -18,5 +18,6 @@ namespace EPS.Model
         public string Name { get; set; }
         public int ParentId { get; set; }
         public string Link { get; set; }
+        public string IconUrl { get; set; }
     }
 }

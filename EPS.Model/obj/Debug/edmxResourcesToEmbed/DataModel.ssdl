@@ -14,14 +14,9 @@
     <EntitySet Name="Province" EntityType="DataModel.Store.Province" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="City" EntityType="DataModel.Store.City" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="County" EntityType="DataModel.Store.County" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TownShip" EntityType="DataModel.Store.TownShip" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PatrolPoint" EntityType="DataModel.Store.PatrolPoint" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PatrolRoute" EntityType="DataModel.Store.PatrolRoute" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PatrolDefect" EntityType="DataModel.Store.PatrolDefect" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="PatrolSchemeDictionary" Association="DataModel.Store.PatrolSchemeDictionary">
-      <End Role="PatrolScheme" EntitySet="PatrolScheme" />
-      <End Role="Dictionary" EntitySet="Dictionary" />
-    </AssociationSet>
     <AssociationSet Name="CompanyDepartment" Association="DataModel.Store.CompanyDepartment">
       <End Role="Company" EntitySet="Company" />
       <End Role="Department" EntitySet="Department" />
@@ -66,14 +61,6 @@
       <End Role="City" EntitySet="City" />
       <End Role="County" EntitySet="County" />
     </AssociationSet>
-    <AssociationSet Name="CountyTownShip" Association="DataModel.Store.CountyTownShip">
-      <End Role="County" EntitySet="County" />
-      <End Role="TownShip" EntitySet="TownShip" />
-    </AssociationSet>
-    <AssociationSet Name="PatrolReportTownShip" Association="DataModel.Store.PatrolReportTownShip">
-      <End Role="PatrolReport" EntitySet="PatrolReport" />
-      <End Role="TownShip" EntitySet="TownShip" />
-    </AssociationSet>
     <AssociationSet Name="PatrolPointPatrolReport" Association="DataModel.Store.PatrolPointPatrolReport">
       <End Role="PatrolPoint" EntitySet="PatrolPoint" />
       <End Role="PatrolReport" EntitySet="PatrolReport" />
@@ -108,7 +95,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Number" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="DefectTypeId" Type="int" Nullable="false" />
     <Property Name="EmployeeId" Type="int" Nullable="false" />
     <Property Name="PatrolRouteId" Type="int" Nullable="false" />
     <Property Name="SchemeDate" Type="datetime" Nullable="false" />
@@ -131,6 +117,7 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ParentId" Type="int" Nullable="false" />
     <Property Name="Link" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IconUrl" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -156,7 +143,7 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Age" Type="int" Nullable="true" />
     <Property Name="Gender" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="IsTeamLeader" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsTeamLeader" Type="bit" Nullable="false" />
     <Property Name="GroupId" Type="int" Nullable="false" />
     <Property Name="DepartmentId" Type="int" Nullable="false" />
     <Property Name="CompanyId" Type="int" Nullable="false" />
@@ -168,7 +155,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PictureUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PictureUrl" Type="nvarchar(max)" Nullable="true" />
     <Property Name="CreateTime" Type="datetime" Nullable="false" />
     <Property Name="Available" Type="bit" Nullable="false" />
     <Property Name="EmployeeId" Type="int" Nullable="false" />
@@ -192,7 +179,6 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DefectTypeId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="EmergenceId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TownShipId" Type="int" Nullable="false" />
     <Property Name="Village" Type="nvarchar(max)" Nullable="true" />
     <Property Name="PatrolPointId" Type="int" Nullable="false" />
     <Property Name="PatrolRouteId" Type="int" Nullable="false" />
@@ -222,14 +208,6 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CityId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="TownShip">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CountyId" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="PatrolPoint">
     <Key>
       <PropertyRef Name="Id" />
@@ -256,18 +234,6 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DefectTypeId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="PatrolSchemeDictionary">
-    <End Role="PatrolScheme" Type="DataModel.Store.PatrolScheme" Multiplicity="*" />
-    <End Role="Dictionary" Type="DataModel.Store.Dictionary" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Dictionary">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PatrolScheme">
-        <PropertyRef Name="DefectTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="CompanyDepartment">
     <End Role="Company" Type="DataModel.Store.Company" Multiplicity="1" />
     <End Role="Department" Type="DataModel.Store.Department" Multiplicity="*" />
@@ -397,30 +363,6 @@
       </Principal>
       <Dependent Role="County">
         <PropertyRef Name="CityId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CountyTownShip">
-    <End Role="County" Type="DataModel.Store.County" Multiplicity="1" />
-    <End Role="TownShip" Type="DataModel.Store.TownShip" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="County">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TownShip">
-        <PropertyRef Name="CountyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PatrolReportTownShip">
-    <End Role="PatrolReport" Type="DataModel.Store.PatrolReport" Multiplicity="*" />
-    <End Role="TownShip" Type="DataModel.Store.TownShip" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="TownShip">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PatrolReport">
-        <PropertyRef Name="TownShipId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
